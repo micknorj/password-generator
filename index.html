@@ -9,6 +9,7 @@
 <title>Password Generator · Mick's Tools</title>
 
 <style>
+/* Theme */
 :root{color-scheme:dark;--bg:#0b0d0f;--surface:#14171a;--hover:#1b1f23;--active:#23282d;--control:#191d21;--control-hover:#20252a;--border:#31373d;--border2:#454d56;--text:#f4f6f8;--muted:#adb4bc;--subtle:#858e98;--success:#8fd1a7;--danger:#e39595;--shadow:0 18px 48px rgba(0,0,0,.32);--focus:rgba(186,198,211,.28);--radius:18px;--cr:12px;--tr:140ms ease}
 html[data-theme="light"]{color-scheme:light;--bg:#cdd1cf;--surface:#dfe2e0;--hover:#d5d9d7;--active:#cbd0cd;--control:#d7dbd9;--control-hover:#cdd2cf;--border:#b5bbb8;--border2:#9ea6a2;--text:#252927;--muted:#555e5a;--subtle:#707975;--success:#49735a;--danger:#915656;--shadow:0 18px 44px rgba(45,53,49,.13);--focus:rgba(54,65,60,.18)}
 *{box-sizing:border-box}html,body{background:var(--bg)}
@@ -21,6 +22,7 @@ button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(-
 .appearance{min-height:36px;padding:0 12px;border:1px solid var(--border);border-radius:var(--cr);background:var(--surface);color:var(--muted);font-size:.76rem;font-weight:600;cursor:pointer;transition:background var(--tr),border-color var(--tr),color var(--tr)}
 .appearance:hover{background:var(--hover);border-color:var(--border2);color:var(--text)}
 
+/* Main layout */
 .shell{height:720px;display:grid;grid-template-columns:390px minmax(0,1fr);gap:1px;overflow:hidden;border:1px solid var(--border2);border-radius:var(--radius);background:var(--border);box-shadow:var(--shadow)}
 .panel{min-width:0;min-height:0;background:var(--surface)}.controls,.output-panel{display:flex;flex-direction:column;overflow:hidden}
 .toolbar{height:44px;padding:0 18px;display:flex;flex-shrink:0;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--border)}
@@ -30,6 +32,7 @@ button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(-
 .section{padding:18px}.section+.section{border-top:1px solid var(--border)}
 .section-head{margin-bottom:12px;display:flex;align-items:center;gap:8px;white-space:nowrap;overflow:hidden}
 .section-heading{margin:0;flex:0 0 auto;color:var(--muted);font-size:.82rem;font-weight:650}
+.characters-section>.section-heading{margin-bottom:12px}
 .section-hint{min-width:0;color:var(--subtle);font-size:.7rem;font-weight:500;overflow:hidden;text-overflow:ellipsis}
 .row{min-height:54px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-bottom:1px solid var(--border)}.row:last-child{border-bottom:0}
 .row-copy{min-width:0}.row-copy strong{display:block;font-size:.88rem;font-weight:520}.row-copy span{display:block;margin-top:2px;color:var(--subtle);font-size:.73rem;line-height:1.4}
@@ -38,6 +41,7 @@ button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(-
 .input:hover:not(:disabled){background:var(--control-hover);border-color:var(--border2)}.input:focus{background:var(--control-hover);border-color:var(--border2);box-shadow:0 0 0 3px var(--focus)}.input::placeholder{color:var(--subtle)}
 input[type=number]{appearance:textfield;-moz-appearance:textfield}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
 
+/* Character cards */
 .char-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .char-card{min-height:84px;padding:11px 12px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:4px;border:1px solid var(--border);border-radius:var(--cr);background:var(--control);color:var(--text);text-align:left;cursor:pointer;transition:background var(--tr),border-color var(--tr),box-shadow var(--tr)}
 .char-card:hover{background:var(--control-hover);border-color:var(--border2)}.char-card.active{background:var(--active);border-color:var(--border2);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--text) 7%,transparent)}
@@ -59,6 +63,7 @@ input[type=number]{appearance:textfield;-moz-appearance:textfield}input[type=num
 .btn:hover:not(:disabled){background:var(--control-hover);border-color:var(--border2)}.btn.subtle{border-color:var(--border);background:transparent;color:var(--muted)}.btn.subtle:hover:not(:disabled){background:var(--hover);border-color:var(--border2);color:var(--text)}
 .btn.primary{width:100%;border-color:var(--text);background:var(--text);color:var(--surface)}.btn.primary:hover:not(:disabled){background:color-mix(in srgb,var(--text) 88%,var(--surface))}.btn:disabled{opacity:.34;cursor:default}
 
+/* Output */
 .output-toolbar{height:44px;padding:0 14px;display:flex;flex-shrink:0;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--border)}
 .output-info{min-width:0;display:flex;align-items:center;gap:8px;white-space:nowrap;overflow:hidden}.output-label{flex:0 0 auto;color:var(--muted);font-size:.82rem;font-weight:650}.output-hint{min-width:0;color:var(--subtle);font-size:.7rem;font-weight:500;overflow:hidden;text-overflow:ellipsis}
 .output{flex:1;min-height:0;overflow-y:auto;padding:10px 12px 12px;scrollbar-width:thin;scrollbar-color:var(--border2) transparent}
@@ -71,6 +76,7 @@ input[type=number]{appearance:textfield;-moz-appearance:textfield}input[type=num
 .local-note{width:100%;margin:12px auto 0;padding:0 12px;color:var(--subtle);font-size:.7rem;line-height:1.55;text-align:center;white-space:nowrap}
 .site-credit{flex-shrink:0;width:100%;margin-top:28px;padding-top:14px;color:var(--subtle);font-size:.7rem;line-height:1.6;text-align:center}.site-credit a{color:var(--muted);font-weight:650;text-decoration:none}.site-credit a:hover{color:var(--text);text-decoration:underline;text-underline-offset:3px}
 
+/* Responsive */
 @media(max-width:980px){body{padding:18px 16px 12px}.page{display:block}.app{margin:auto}.shell{height:auto;grid-template-columns:1fr}.output-panel{min-height:520px}.local-note{white-space:normal}}
 @media(max-width:520px){body{padding:12px}.header{align-items:center}.eyebrow{font-size:.76rem}h1{font-size:1.48rem}.appearance{min-height:34px;padding:0 10px;font-size:.7rem}.shell{border-radius:15px}.section{padding:15px}.char-grid{gap:7px}.char-card{min-height:78px;padding:10px}.symbol-card{min-height:auto}.output-toolbar{padding:0 12px}.output-info,.section-head{gap:6px}.output-hint,.section-hint{font-size:.66rem}.toolbar-actions{flex-shrink:0}.btn{padding:0 10px}.local-note{margin-top:10px;padding:0 6px;font-size:.67rem}.site-credit{margin-top:24px;padding-top:10px;font-size:.67rem}}
 </style>
@@ -108,7 +114,7 @@ input[type=number]{appearance:textfield;-moz-appearance:textfield}input[type=num
       </div>
     </section>
 
-    <section class="section">
+    <section class="section characters-section">
       <p class="section-heading">Characters</p>
 
       <div class="char-grid">
