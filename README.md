@@ -1,12 +1,11 @@
 # Password Generator
 
-Part of **Mick's Tools**.
+Part of Mick's Tools.
 
-A privacy-focused password generator that runs entirely in your browser using cryptographically secure randomness.
+A password generator that creates passwords locally in your browser using cryptographically secure randomness.
 
 ## Features
 
-- Cryptographically secure password generation
 - Custom password length and quantity
 - Optional fixed prefix
 - Uppercase, lowercase, numbers and symbols
@@ -19,16 +18,21 @@ A privacy-focused password generator that runs entirely in your browser using cr
 - No analytics or tracking
 - No server-side password processing
 
-## Local processing
+## Privacy
 
-Passwords and settings are processed entirely inside your browser and are not sent to a server by this application.
+Passwords and settings are processed inside your browser and are not sent to a server by this application.
 
-The site is hosted using GitHub Pages, which may process standard connection information as part of hosting and security.
+The site is hosted on [GitHub Pages](https://pages.github.com/), which may process standard connection information for hosting and security.
 
 ## Security
 
-Random values are generated using the browser's Web Crypto API through `crypto.getRandomValues()`.
+Random values are generated with the browser [Web Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API) through `crypto.getRandomValues()`.
+
+## Limitations
+
+- Up to 100 passwords can be generated at once
+- The generator does not store or manage passwords for you
 
 ## License
 
-This project is licensed under the MIT License. See `LICENSE`.
+Licensed under the [MIT License](LICENSE).
